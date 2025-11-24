@@ -15,16 +15,17 @@ def main():
     # character count:
     book_char_count = char_count(frank_str)
     book_sorted_char_count = sort_char_count(book_char_count) # convert to list and sort
+    book_sorted_filtered_char_count = []
     for di in book_sorted_char_count: # remove all non-letter characters from list
-        if not di["char"].isalpha():
-            book_sorted_char_count.remove(di)
+        if di["char"].isalpha():
+            book_sorted_filtered_char_count.append(di)
     # create report
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {frank_path}...")
     print("----------- Word Count ----------")
     print(f"Found {book_wordcount} total words")
     print("--------- Character Count -------")
-    for di in book_sorted_char_count:
+    for di in book_sorted_filtered_char_count:
         print(f"{di["char"]}: {di["num"]}")
-
+    
 main()
